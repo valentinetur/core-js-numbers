@@ -294,8 +294,11 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const arr = num.toString().split('');
+  const arrNumber = arr.map((el) => Number(el));
+  const sum = arrNumber.reduce((acc, current) => acc + current, 0);
+  return sum;
 }
 
 /**
@@ -338,8 +341,8 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
 
 /**
@@ -367,8 +370,8 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -382,6 +385,9 @@ function toFixed(/* number, fractionDigits */) {
  * @example:
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
+ * const newNumber = Number(number.toString().replace('.', ''));
+  let result = newNumber / (10 ** (precision - 1));
+  return result;
  */
 function toPrecision(/* number, precision */) {
   throw new Error('Not implemented');
@@ -492,8 +498,9 @@ function isSafeInteger(/* number */) {
  * 5.9  => 5
  * -5.1 => -6
  */
-function roundToSmallestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToSmallestInteger(number) {
+  const result = Math.floor(number);
+  return result;
 }
 
 /**
@@ -506,8 +513,9 @@ function roundToSmallestInteger(/* number */) {
  * 5.1  => 6
  * -5.9 => -5
  */
-function roundToLargestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToLargestInteger(number) {
+  const result = Math.ceil(number);
+  return result;
 }
 
 /**
@@ -521,8 +529,9 @@ function roundToLargestInteger(/* number */) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function roundToNearestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToNearestInteger(number) {
+  const result = Math.round(number);
+  return result;
 }
 
 /**
@@ -536,8 +545,9 @@ function roundToNearestInteger(/* number */) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function getIntegerPartNumber(/* number */) {
-  throw new Error('Not implemented');
+function getIntegerPartNumber(number) {
+  const result = Math.trunc(number);
+  return result;
 }
 
 /**
@@ -552,8 +562,8 @@ function getIntegerPartNumber(/* number */) {
  * 1, 2, 3       => 6
  * 0.1, 0.2, 0.3 => 0.6
  */
-function getSumOfNumbers(/* x1, x2, x3 */) {
-  throw new Error('Not implemented');
+function getSumOfNumbers(x1, x2, x3) {
+  return (x1 + x2 + x3).toFixed(2);
 }
 
 /**
@@ -598,8 +608,9 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  const result = Math.hypot(a, b);
+  return result;
 }
 
 /**
@@ -615,8 +626,23 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let result = 0;
+  if (number > 0) {
+    for (let i = 0; i < number; i += 1) {
+      if (i % 2 === 0) {
+        result += 1;
+      }
+    }
+  } else {
+    for (let i = 0; i > number; i -= 1) {
+      if (i % 2 === 0) {
+        result += 1;
+      }
+    }
+  }
+
+  return result;
 }
 
 module.exports = {
